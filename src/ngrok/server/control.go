@@ -148,7 +148,7 @@ func (c *Control) registerTunnel(rawTunnelReq *msg.ReqTunnel) {
 
 		// acknowledge success
 		c.out <- &msg.NewTunnel{
-			Url:      t.url,
+			Url:      strings.Replace(t.url, opts.domain, "ngrok.com", 1),
 			Protocol: proto,
 			ReqId:    rawTunnelReq.ReqId,
 		}

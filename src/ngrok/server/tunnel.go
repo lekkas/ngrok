@@ -267,7 +267,7 @@ func (t *Tunnel) HandlePublicConnection(publicConn conn.Conn) {
 
 		// tell the client we're going to start using this proxy connection
 		startPxyMsg := &msg.StartProxy{
-			Url:        t.url,
+			Url:        strings.Replace(t.url, opts.domain, "ngrok.com", 1),
 			ClientAddr: publicConn.RemoteAddr().String(),
 		}
 
